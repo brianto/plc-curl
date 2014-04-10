@@ -6,12 +6,17 @@ public enum Token {
 	ROOT(capturedPattern("root")),
 	BRACE_LEFT(capturedPattern("\\{")),
 	BRACE_RIGHT(capturedPattern("\\}")),
-	TEXT_LITERAL("^\\s*'(?<text>[^\\{\\}']+)'\\s*"),
-	TEXT_ESCAPED("^\\s*(?<text>[^\\{\\}\\s']+)\\s*"),
-	TAG_HEADER("^\\s*(?<id>h)\\s*(?<level>\\d)\\s*"),
-	TAG_STYLE("^\\s*(?<id>style)\\s*(?<type>bold|italic)\\s*"),
+	TAG_HEADER(capturedPattern("h")),
+	TAG_HEADER_LEVEL(capturedPattern("\\d")),
+	TAG_STYLE(capturedPattern("style")),
+	TAG_STYLE_BOLD(capturedPattern("bold")),
+	TAG_STYLE_ITALIC(capturedPattern("italic")),
 	TAG_PARAGRAPH(capturedPattern("p")),
-	TAG_LIST(capturedPattern("ol|ul"));
+	TAG_LIST_UNORDERED(capturedPattern("ul")),
+	TAG_LIST_ORDERED(capturedPattern("ol")),
+	TEXT_LITERAL("^\\s*'(?<id>[^\\{\\}']+)'\\s*"),
+	TEXT_ESCAPED(capturedPattern("[^\\{\\}\\s']+")),
+	;
 
 	private Pattern pattern;
 	
@@ -20,11 +25,15 @@ public enum Token {
 	}
 	
 	private Token(String pattern) {
-		this.pattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+		this.pattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
 		System.out.println(this.pattern.toString());
 	}
 	
 	public Matcher matcher(String input) {
 		return this.pattern.matcher(input);
+	}
+	
+	public String regex() {
+		return this.pattern.toString();
 	}
 }

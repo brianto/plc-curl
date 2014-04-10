@@ -14,53 +14,40 @@ public class TokenTest {
 	}
 	
 	@Test
-	public void root() {
+	public void tokens() {
 		assertTokenRegex(Token.ROOT, "id", " root ", "root");
-	}
-	
-	@Test
-	public void braceLeft() {
+		
 		assertTokenRegex(Token.BRACE_LEFT, "id", " { ", "{");
-	}
-	
-	@Test
-	public void braceRight() {
 		assertTokenRegex(Token.BRACE_RIGHT, "id", " } ", "}");
-	}
-	
-	@Test
-	public void textLiteral() {
-		assertTokenRegex(Token.TEXT_LITERAL, "text", " 'cool, dawg' ", "cool, dawg");
-		assertTokenRegex(Token.TEXT_LITERAL, "text", " '\thow you doin babe?\t' ", "\thow you doin babe?\t");
-	}
-	
-	@Test
-	public void textEscaped() {
-		assertTokenRegex(Token.TEXT_ESCAPED, "text", " swagtastic\t", "swagtastic");
-	}
-	
-	@Test
-	public void header() {
-		assertTokenRegex(Token.TAG_HEADER, "id", "h 3", "h");
-		assertTokenRegex(Token.TAG_HEADER, "level", "h 3", "3");
-	}
-	
-	@Test
-	public void style() {
-		assertTokenRegex(Token.TAG_STYLE, "id", "style   italic", "style");
-		assertTokenRegex(Token.TAG_STYLE, "type", "style   italic", "italic");
-		assertTokenRegex(Token.TAG_STYLE, "type", "stylebold", "bold");
-	}
-	
-	@Test
-	public void paragraph() {
+		
 		assertTokenRegex(Token.TAG_PARAGRAPH, "id", " p ", "p");
 	}
 	
 	@Test
+	public void text() {
+		assertTokenRegex(Token.TEXT_LITERAL, "id", " 'cool, dawg' ", "cool, dawg");
+		assertTokenRegex(Token.TEXT_LITERAL, "id", " '\thow you doin babe?\t' ", "\thow you doin babe?\t");
+		
+		assertTokenRegex(Token.TEXT_ESCAPED, "id", " swagtastic\t", "swagtastic");
+	}
+	
+	@Test
+	public void header() {
+		assertTokenRegex(Token.TAG_HEADER, "id", " h ", "h");
+		assertTokenRegex(Token.TAG_HEADER_LEVEL, "id", " 3 ", "3");
+	}
+	
+	@Test
+	public void style() {
+		assertTokenRegex(Token.TAG_STYLE, "id", " style ", "style");
+		assertTokenRegex(Token.TAG_STYLE_BOLD, "id", "  bold", "bold");
+		assertTokenRegex(Token.TAG_STYLE_ITALIC, "id", "italic", "italic");
+	}
+	
+	@Test
 	public void list() {
-		assertTokenRegex(Token.TAG_LIST, "id", " ol ", "ol");
-		assertTokenRegex(Token.TAG_LIST, "id", " ul ", "ul");
+		assertTokenRegex(Token.TAG_LIST_ORDERED, "id", " ol ", "ol");
+		assertTokenRegex(Token.TAG_LIST_UNORDERED, "id", " ul ", "ul");
 	}
 	
 	/**
