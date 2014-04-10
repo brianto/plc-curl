@@ -26,7 +26,6 @@ public enum Token {
 	
 	private Token(String pattern) {
 		this.pattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-		System.out.println(this.pattern.toString());
 	}
 	
 	public Matcher matcher(String input) {
