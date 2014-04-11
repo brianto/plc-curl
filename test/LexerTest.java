@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertEquals;
 
-import java.util.LinkedList;
 import java.util.Queue;
 
 import org.junit.Test;
@@ -9,7 +8,7 @@ public class LexerTest {
 
 	@Test
 	public void simpleTokens() {
-		Queue<TokenData> tokens = lex("root 'ohai' { p { wazzup bro? } }");
+		Queue<TokenData> tokens = TestUtil.lex("root 'ohai' { p { wazzup bro? } }");
 		
 		assertTokenData(Token.ROOT, tokens.poll());
 		assertTokenData(Token.TEXT_LITERAL, "ohai", tokens.poll());
@@ -26,7 +25,7 @@ public class LexerTest {
 	public void spaces() {
 		Queue<TokenData> tokens;
 		
-		tokens = lex("root'ohai'{ok}");
+		tokens = TestUtil.lex("root'ohai'{ok}");
 
 		assertTokenData(Token.ROOT, tokens.poll());
 		assertTokenData(Token.TEXT_LITERAL, "ohai", tokens.poll());
@@ -34,7 +33,7 @@ public class LexerTest {
 		assertTokenData(Token.TEXT_ESCAPED, "ok", tokens.poll());
 		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
 
-		tokens = lex("root 'ohai' {\n\tok\n}");
+		tokens = TestUtil.lex("root 'ohai' {\n\tok\n}");
 		
 		assertTokenData(Token.ROOT, tokens.poll());
 		assertTokenData(Token.TEXT_LITERAL, "ohai", tokens.poll());
@@ -50,17 +49,5 @@ public class LexerTest {
 	
 	private static void assertTokenData(Token token, TokenData actual) {
 		assertEquals(token, actual.getToken());
-	}
-	
-	private static Queue<TokenData> lex(String input) {
-		Lexer lexer = new Lexer(input);
-		
-		Queue<TokenData> tokens = new LinkedList<TokenData>();
-		
-		while (lexer.hasNext()) {
-			tokens.offer(lexer.next());
-		}
-		
-		return tokens;
 	}
 }
