@@ -9,7 +9,7 @@ public class NodeTest {
 
 	@Test
 	public void root() {
-		assertHTMLMatchesCurl(
+		assertHtmlMatchesCurl(
 				new RootNode(),
 				"root 'kowloon' { }",
 				"<html><head><title>kowloon</title></head><body></body></html>");
@@ -17,10 +17,33 @@ public class NodeTest {
 	
 	@Test
 	public void header() {
-		assertHTMLMatchesCurl(new HeaderNode(), "h 3 { }", "<h3></h3>");
+		assertHtmlMatchesCurl(new HeaderNode(), "h 3 { }", "<h3></h3>");
 	}
 	
-	public static void assertHTMLMatchesCurl(Node node, String curl, String expected) {
+	@Test
+	public void list() {
+		assertHtmlMatchesCurl(new ListNode(), "ul { }", "<ul></ul>");
+		assertHtmlMatchesCurl(new ListNode(), "ol { }", "<ol></ol>");
+	}
+	
+	@Test
+	public void paragraph() {
+		assertHtmlMatchesCurl(new ParagraphNode(), "p { }", "<p></p>");
+	}
+	
+	@Test
+	public void style() {
+		assertHtmlMatchesCurl(new StyleNode(), "style bold { }", "<strong></strong>");
+		assertHtmlMatchesCurl(new StyleNode(), "style italic { }", "<em></em>");
+	}
+	
+	@Test
+	public void text() {
+		assertHtmlMatchesCurl(new TextNode(), "text { whats <up> dog? }", "whats &lt;up&gt; dog?");
+		assertHtmlMatchesCurl(new TextNode(), "text { '<litterally>' }", "<litterally>");
+	}
+	
+	public static void assertHtmlMatchesCurl(Node node, String curl, String expected) {
 		Queue<TokenData> tokens = TestUtil.lex(curl);
 		String actual = node.parse(tokens).html();
 		
