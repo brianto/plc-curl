@@ -13,18 +13,22 @@ public class UnitNode extends Node {
 		
 		if (incomingTokenIs(tokens, Token.TAG_LIST_ORDERED) ||
 			incomingTokenIs(tokens, Token.TAG_LIST_UNORDERED)) {
+			this.child = new ListNode().parse(tokens);
 			return this;
 		}
 		
 		if (incomingTokenIs(tokens, Token.TAG_PARAGRAPH)) {
+			this.child = new ParagraphNode().parse(tokens);
 			return this;
 		}
 		
 		if (incomingTokenIs(tokens, Token.TAG_STYLE)) {
+			this.child = new StyleNode().parse(tokens);
 			return this;
 		}
 		
 		if (incomingTokenIs(tokens, Token.TEXT)) {
+			this.child = new TextNode().parse(tokens);
 			return this;
 		}
 		
