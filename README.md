@@ -12,13 +12,13 @@
 
 ## Grammar
 
-    Root ::= root "'"literal-text"'" "{" Unit "}"
-    Unit ::= Header | List | Paragraph | Sequence | Style | Text | "{" Unit "}"
-    Header ::= "h" integer "{" Unit "}"
+    Root ::= root "'"literal-text"'" "{" Unit* "}"
+    Unit ::= Header | List | Paragraph | Style | Text
+    Header ::= "h" integer "{" Unit* "}"
     List ::= ( "ol" | "ul" ) "{" Unit* "}"
-    Paragraph ::= "p" "{" Unit "}"
-    Style ::= "style" ( "bold" | "italic" ) "{" Unit "}"
-    Text ::= word* | "'"literal-text"'"
+    Paragraph ::= "p" "{" Unit* "}"
+    Style ::= "style" ( "bold" | "italic" ) "{" Unit* "}"
+    Text ::= "text" "{" ( word* | "'"literal-text"'" ) "}"
 
     Tokens Mentioned Above Without Quotes
 

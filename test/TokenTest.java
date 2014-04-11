@@ -25,6 +25,8 @@ public class TokenTest {
 	
 	@Test
 	public void text() {
+		assertTokenRegex(Token.TEXT, "id", " text ", "text");
+
 		assertTokenRegex(Token.TEXT_LITERAL, "id", " 'cool, dawg' ", "cool, dawg");
 		assertTokenRegex(Token.TEXT_LITERAL, "id", " '\thow you doin babe?\t' ", "\thow you doin babe?\t");
 		
