@@ -9,17 +9,21 @@ public class NodeTest {
 
 	@Test
 	public void root() {
-		Queue<TokenData> tokens = TestUtil.lex("root 'kowloon' { }");
-		RootNode node = new RootNode().parse(tokens);
-		
-		assertEquals("<html><head><title>kowloon</title></head><body></body></html>", node.html());
+		assertHTMLMatchesCurl(
+				new RootNode(),
+				"root 'kowloon' { }",
+				"<html><head><title>kowloon</title></head><body></body></html>");
 	}
 	
 	@Test
 	public void header() {
-		Queue<TokenData> tokens = TestUtil.lex("h 3 { }");
-		HeaderNode node = new HeaderNode().parse(tokens);
+		assertHTMLMatchesCurl(new HeaderNode(), "h 3 { }", "<h3></h3>");
+	}
+	
+	public static void assertHTMLMatchesCurl(Node node, String curl, String expected) {
+		Queue<TokenData> tokens = TestUtil.lex(curl);
+		String actual = node.parse(tokens).html();
 		
-		assertEquals("<h3></h3>", node.html());
+		assertEquals(expected, actual);
 	}
 }
