@@ -5,7 +5,7 @@ public class UnitNode extends Node {
 	private Node child;
 
 	@Override
-	public Node parse(Queue<TokenData> tokens) {
+	public UnitNode parse(Queue<TokenData> tokens) {
 		if (incomingTokenIs(tokens, Token.TAG_HEADER)) {
 			this.child = new HeaderNode().parse(tokens);
 			return this;

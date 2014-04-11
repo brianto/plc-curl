@@ -1,15 +1,16 @@
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 
 public class HeaderNode extends Node {
 	
-	private List<Node> children;
+	private List<Node> children = new LinkedList<Node>();
 
 	private int level;
 
 	@Override
-	public Node parse(Queue<TokenData> tokens) {
+	public HeaderNode parse(Queue<TokenData> tokens) {
 		consumeAndExpect(tokens, Token.TAG_HEADER);
 		
 		TokenData levelToken = consumeAndExpect(tokens, Token.TAG_HEADER_LEVEL);

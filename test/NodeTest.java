@@ -14,4 +14,12 @@ public class NodeTest {
 		
 		assertEquals("<html><head><title>kowloon</title></head><body></body></html>", node.html());
 	}
+	
+	@Test
+	public void header() {
+		Queue<TokenData> tokens = TestUtil.lex("h 3 { }");
+		HeaderNode node = new HeaderNode().parse(tokens);
+		
+		assertEquals("<h3></h3>", node.html());
+	}
 }

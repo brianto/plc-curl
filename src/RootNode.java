@@ -1,10 +1,11 @@
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 
 public class RootNode extends Node {
 
-	private List<Node> children;
+	private List<Node> children = new LinkedList<Node>();
 	
 	private String title;
 	
@@ -20,6 +21,8 @@ public class RootNode extends Node {
 			this.children.add(new UnitNode().parse(tokens));
 		}
 		
+		consumeAndExpect(tokens, Token.BRACE_RIGHT);
+
 		if (!tokens.isEmpty()) {
 			throw new RuntimeException("There should be no more symbols but more symbols found");
 		}
