@@ -1,0 +1,10 @@
+root ALL {
+    text { text }
+    p { text { paragraph } }
+    style italic { text { ITALICIZED } }
+    style bold { text { BOLD } }
+    h 1 { text { HEADER1 } }
+    h 5 { text { HEADER5 } }
+    ol { text { number1 } text { number2 } text { number3 } }
+    ul { text { number1 } text { number2 } text { number3 } }
+}
