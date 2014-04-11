@@ -1,0 +1,19 @@
+
+
+root SPACING {
+    p {
+        text { 'my' } style italic { text{ 'Italicized' } } text{ 'stuff' }
+    }
+    p {
+        text { 'your' } h 2 { text{ 'Header' } } text { 'line' }
+    }
+    p {
+        text { Now, without quotes: }
+    }
+    p {
+        text { my } style italic { text{ Italicized } } text{ stuff }
+    }
+    p {
+        text { your } h 2 { text{ Header } } text { line }
+    }
+}
