@@ -17,7 +17,7 @@ public class NodeTest {
 	
 	@Test
 	public void text() {
-		assertHtmlMatchesCurl(new TextNode(), "text { whats <up> dog? }", "whats &lt;up&gt; dog?");
+		assertHtmlMatchesCurl(new TextNode(), "text { whats <up> dog? }", " whats  &lt;up&gt;  dog? ");
 		assertHtmlMatchesCurl(new TextNode(), "text { '<litterally>' }", "<litterally>");
 	}
 	
@@ -25,7 +25,7 @@ public class NodeTest {
 	public void header() {
 		assertHtmlMatchesCurl(new HeaderNode(), "h 3 { }", "<h3></h3>");
 		
-		assertHtmlMatchesCurl(new HeaderNode(), "h 1 { h 2 { text { nest! } } }", "<h1><h2>nest!</h2></h1>");
+		assertHtmlMatchesCurl(new HeaderNode(), "h 1 { h 2 { text { nest! } } }", "<h1><h2> nest! </h2></h1>");
 	}
 	
 	@Test
@@ -33,14 +33,14 @@ public class NodeTest {
 		assertHtmlMatchesCurl(new ListNode(), "ul { }", "<ul></ul>");
 		assertHtmlMatchesCurl(new ListNode(), "ol { }", "<ol></ol>");
 		
-		assertHtmlMatchesCurl(new ListNode(), "ol { text { a } text { b } }", "<ol><li>a</li><li>b</li></ol>");
+		assertHtmlMatchesCurl(new ListNode(), "ol { text { a } text { b } }", "<ol><li> a </li><li> b </li></ol>");
 	}
 	
 	@Test
 	public void paragraph() {
 		assertHtmlMatchesCurl(new ParagraphNode(), "p { }", "<p></p>");
 		
-		assertHtmlMatchesCurl(new ParagraphNode(), "p { text { oh shit } }", "<p>oh shit</p>");
+		assertHtmlMatchesCurl(new ParagraphNode(), "p { text { oh shit } }", "<p> oh  shit </p>");
 	}
 	
 	@Test
@@ -48,7 +48,7 @@ public class NodeTest {
 		assertHtmlMatchesCurl(new StyleNode(), "style bold { }", "<strong></strong>");
 		assertHtmlMatchesCurl(new StyleNode(), "style italic { }", "<em></em>");
 		
-		assertHtmlMatchesCurl(new StyleNode(), "style italic { text { slanty } }", "<em>slanty</em>");
+		assertHtmlMatchesCurl(new StyleNode(), "style italic { text { italic } }", "<em> italic </em>");
 	}
 	
 	public static void assertHtmlMatchesCurl(Node node, String curl, String expected) {

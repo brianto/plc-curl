@@ -12,18 +12,14 @@ public class TextNode extends Node {
 		
 		if (incomingTokenIs(tokens, Token.TEXT_LITERAL)) {
 			this.text = consumeAndExpect(tokens, Token.TEXT_LITERAL).getData();
-		} else if (incomingTokenIs(tokens, Token.TEXT_ESCAPED)) {
+		} else if (incomingTokenIsEscapedText(tokens)) {
 			StringBuilder builder = new StringBuilder();
 			
-			while (incomingTokenIs(tokens, Token.TEXT_ESCAPED)) {
+			while (!incomingTokenIs(tokens, Token.BRACE_RIGHT)) {
 				TokenData token = tokens.poll();
 				String text = sanitize(token.getData());
 				
-				builder.append(text);
-				
-				if (incomingTokenIs(tokens, Token.TEXT_ESCAPED)) {
-					builder.append(' ');
-				}
+				builder.append(" " + text + " ");
 			}
 			
 			this.text = builder.toString();
@@ -48,5 +44,9 @@ public class TextNode extends Node {
 		return text
 				.replaceAll("\\<", "&lt;")
 				.replaceAll("\\>", "&gt;");
+	}
+	
+	private static boolean incomingTokenIsEscapedText(Queue<TokenData> tokens) {
+		return !incomingTokenIs(tokens, Token.BRACE_LEFT, Token.BRACE_RIGHT, Token.TEXT_LITERAL);
 	}
 }
