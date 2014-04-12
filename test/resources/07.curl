@@ -1,1 +1,1 @@
-root BOLD { style bold { text { BOLD } } }
+root 'BOLD' { style bold { text { BOLD } } }

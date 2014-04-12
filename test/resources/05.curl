@@ -1,1 +1,1 @@
-root PARAGRAPH { p { text { paragraph } } }
+root 'PARAGRAPH' { p { text { paragraph } } }

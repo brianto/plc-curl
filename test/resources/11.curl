@@ -1,1 +1,1 @@
-root BULLETS { ul { text { number1 } text { number2 } text { number3 } } }
+root 'BULLETS' { ul { text { number1 } text { number2 } text { number3 } } }

@@ -1,1 +1,1 @@
-root ITALICIZED { style italic { text { ITALICIZED } } }
+root 'ITALICIZED' { style italic { text { ITALICIZED } } }

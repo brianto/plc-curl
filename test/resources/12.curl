@@ -1,4 +1,4 @@
-root ALL {
+root 'ALL' {
     text { text }
     p { text { paragraph } }
     style italic { text { ITALICIZED } }

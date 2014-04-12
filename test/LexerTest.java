@@ -42,6 +42,25 @@ public class LexerTest {
 		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
 	}
 	
+	@Test
+	public void contextSwitch() {
+		Queue<TokenData> tokens = TestUtil.lex("root 'tricky' { text { p h ul ol bold italic } }");
+		
+		assertTokenData(Token.ROOT, tokens.poll());
+		assertTokenData(Token.TEXT_LITERAL, "tricky", tokens.poll());
+		assertTokenData(Token.BRACE_LEFT, tokens.poll());
+		assertTokenData(Token.TEXT, tokens.poll());
+		assertTokenData(Token.BRACE_LEFT, tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "p", tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "h", tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "ul", tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "ol", tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "bold", tokens.poll());
+		assertTokenData(Token.TEXT_ESCAPED, "italic", tokens.poll());
+		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
+		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
+	}
+	
 	private static void assertTokenData(Token token, String data, TokenData actual) {
 		assertEquals(token, actual.getToken());
 		assertEquals(data, actual.getData());

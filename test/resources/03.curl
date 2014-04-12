@@ -1,6 +1,6 @@
 
 
-root SPACING {
+root 'SPACING' {
     p {
         text { 'my' } style italic { text{ 'Italicized' } } text{ 'stuff' }
     }

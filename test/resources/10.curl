@@ -1,1 +1,1 @@
-root NUMLIST { ol { text { number1 } text { number2 } text { number3 } } }
+root 'NUMLIST' { ol { text { number1 } text { number2 } text { number3 } } }

@@ -1,4 +1,4 @@
-root HELLO{
+root 'HELLO'{
   h 1{ text{Part ONE} }
   p{
     text{ hello }
