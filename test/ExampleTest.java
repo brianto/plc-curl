@@ -15,9 +15,23 @@ import org.junit.Test;
 public class ExampleTest {
 
 	@Test
+	public void test00() throws Exception {
+		assertParsedCurlMatchesHtml("00.curl", "00.html");
+	}
+	
+	@Test
 	public void test01() throws Exception {
-		String curl = resource("00.curl");
-		String expected = resource("00.html");
+		assertParsedCurlMatchesHtml("01.curl", "01.html");
+	}
+	
+	@Test
+	public void test02() throws Exception {
+		assertParsedCurlMatchesHtml("02.curl", "02.html");
+	}
+	
+	private static void assertParsedCurlMatchesHtml(String curlFileLocation, String htmlFileLocation) {
+		String curl = resource(curlFileLocation);
+		String expected = resource(htmlFileLocation);
 		
 		Lexer lexer = new Lexer(curl);
 		

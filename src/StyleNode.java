@@ -14,8 +14,8 @@ public class StyleNode extends Node {
 	private static final Map<String, String> STYLE_TO_TAG_MAPPINGS = new HashMap<String, String>();
 	
 	static {
-		STYLE_TO_TAG_MAPPINGS.put("bold", "strong");
-		STYLE_TO_TAG_MAPPINGS.put("italic", "em");
+		STYLE_TO_TAG_MAPPINGS.put("bold", "b"); // Should really be <strong>
+		STYLE_TO_TAG_MAPPINGS.put("italic", "i"); // Should really be <em>
 	}
 
 	@Override

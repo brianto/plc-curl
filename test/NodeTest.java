@@ -45,10 +45,10 @@ public class NodeTest {
 	
 	@Test
 	public void style() {
-		assertHtmlMatchesCurl(new StyleNode(), "style bold { }", "<strong></strong>");
-		assertHtmlMatchesCurl(new StyleNode(), "style italic { }", "<em></em>");
+		assertHtmlMatchesCurl(new StyleNode(), "style bold { }", "<b></b>");
+		assertHtmlMatchesCurl(new StyleNode(), "style italic { }", "<i></i>");
 		
-		assertHtmlMatchesCurl(new StyleNode(), "style italic { text { italic } }", "<em> italic </em>");
+		assertHtmlMatchesCurl(new StyleNode(), "style italic { text { italic } }", "<i> italic </i>");
 	}
 	
 	public static void assertHtmlMatchesCurl(Node node, String curl, String expected) {
