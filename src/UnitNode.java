@@ -1,5 +1,6 @@
-import java.util.Queue;
+/** @author Brian To (bxt5647) */
 
+import java.util.Queue;
 
 public class UnitNode extends Node {
 	private Node child;

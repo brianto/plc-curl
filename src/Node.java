@@ -1,6 +1,7 @@
+/** @author Brian To (bxt5647) */
+
 import java.util.Collection;
 import java.util.Queue;
-
 
 public abstract class Node {
 	public abstract Node parse(Queue<TokenData> tokens);

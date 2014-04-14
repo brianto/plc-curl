@@ -1,9 +1,10 @@
+/** @author Brian To (bxt5647) */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Queue;
-
 
 public class Main {
 

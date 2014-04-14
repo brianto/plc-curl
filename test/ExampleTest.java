@@ -1,3 +1,5 @@
+/** @author Brian To (bxt5647) */
+
 import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
@@ -7,7 +9,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import org.junit.Test;
-
 
 /**
  * Assume everything is run from eclipse

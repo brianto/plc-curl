@@ -1,3 +1,4 @@
+/** @author Brian To (bxt5647) */
 
 public class TokenData {
 

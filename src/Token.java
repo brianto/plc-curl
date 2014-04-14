@@ -1,6 +1,7 @@
+/** @author Brian To (bxt5647) */
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 public enum Token {
 	ROOT(capturedPattern("root")),

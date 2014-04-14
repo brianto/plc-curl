@@ -1,3 +1,5 @@
+/** @author Brian To (bxt5647) */
+
 import java.util.Iterator;
 import java.util.regex.Matcher;
 

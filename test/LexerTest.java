@@ -1,3 +1,5 @@
+/** @author Brian To (bxt5647) */
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.Queue;
