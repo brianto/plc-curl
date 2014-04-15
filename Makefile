@@ -6,10 +6,10 @@ CURL=
 compile:
 	rm -rf $(BUILD)
 	mkdir $(BUILD)
-	$(JAVAC) src/*.java -d $(BUILD)
+	$(JAVAC) *.java -d $(BUILD)
 
 run: compile
 	$(JAVA) Main $(CURL)
 
-submit: compile
+submit:
 	try jeh-grd plc-curl Makefile src/*.java
