@@ -63,6 +63,20 @@ public class LexerTest {
 		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
 	}
 	
+	@Test
+	public void specialLiterals() {
+		Queue<TokenData> tokens = TestUtil.lex("root'{}'{text{'{}'}}");
+		
+		assertTokenData(Token.ROOT, tokens.poll());
+		assertTokenData(Token.TEXT_LITERAL, "{}", tokens.poll());
+		assertTokenData(Token.BRACE_LEFT, tokens.poll());
+		assertTokenData(Token.TEXT, tokens.poll());
+		assertTokenData(Token.BRACE_LEFT, tokens.poll());
+		assertTokenData(Token.TEXT_LITERAL, "{}", tokens.poll());
+		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
+		assertTokenData(Token.BRACE_RIGHT, tokens.poll());
+	}
+	
 	private static void assertTokenData(Token token, String data, TokenData actual) {
 		assertEquals(token, actual.getToken());
 		assertEquals(data, actual.getData());

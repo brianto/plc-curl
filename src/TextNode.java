@@ -13,6 +13,7 @@ public class TextNode extends Node {
 		
 		if (incomingTokenIs(tokens, Token.TEXT_LITERAL)) {
 			this.text = consumeAndExpect(tokens, Token.TEXT_LITERAL).getData();
+			this.text = this.text.replaceAll("[ ]", "&nbsp;");
 		} else if (incomingTokenIsEscapedText(tokens)) {
 			StringBuilder builder = new StringBuilder();
 			
