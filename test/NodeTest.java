@@ -19,7 +19,9 @@ public class NodeTest {
 	@Test
 	public void text() {
 		assertHtmlMatchesCurl(new TextNode(), "text { whats <up> dog? }", " whats  &lt;up&gt;  dog? ");
-		assertHtmlMatchesCurl(new TextNode(), "text { '<litterally>' }", "<litterally>");
+		assertHtmlMatchesCurl(new TextNode(), "text { '<literally>' }", "<literally>");
+		
+		assertHtmlMatchesCurl(new TextNode(), "text { '{ }' }", "{&nbsp;}");
 	}
 	
 	@Test

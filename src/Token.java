@@ -19,7 +19,7 @@ public enum Token {
 	TAG_LIST_UNORDERED(capturedPattern("ul")),
 	TAG_LIST_ORDERED(capturedPattern("ol")),
 	TEXT(capturedPattern("text")),
-	TEXT_LITERAL("^\\s*'(?<id>[^\\{\\}']+)'\\s*"),
+	TEXT_LITERAL("^\\s*'(?<id>[^']+)'\\s*"),
 	TEXT_ESCAPED(capturedPattern("[^\\{\\}\\s']+")),
 	;
 
