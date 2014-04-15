@@ -1,9 +1,10 @@
+/** @author Brian To (bxt5647) */
+
 import static org.junit.Assert.*;
 
 import java.util.Queue;
 
 import org.junit.Test;
-
 
 public class NodeTest {
 

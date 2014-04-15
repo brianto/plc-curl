@@ -1,10 +1,18 @@
+/** @author Brian To (bxt5647) */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * Entry point for program.
+ * 
+ * Parses given curl file and prints HTML to stdout.
+ * 
+ * @param args path to curl file
+ */
 public class Main {
 
 	public static void main(String[] args) {
@@ -23,6 +31,14 @@ public class Main {
 		System.out.println(root.html());
 	}
 
+	/**
+	 * Returns {@link File} for file to curl.
+	 * 
+	 * Exits program if no argument or file not found
+	 * 
+	 * @param args main's arguments
+	 * @return {@link File} to curl file
+	 */
 	private static File inputFile(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Bad arguments: make run CURL=<file.curl>");
@@ -39,6 +55,14 @@ public class Main {
 		return target;
 	}
 	
+	/**
+	 * Read file to string. :-)
+	 * 
+	 * Exits program if error in reading file.
+	 * 
+	 * @param input file to read
+	 * @return contents of file as {@link String}
+	 */
 	private static String readFileToString(File input) {
 		StringBuilder result = new StringBuilder();
 		String line = null;
